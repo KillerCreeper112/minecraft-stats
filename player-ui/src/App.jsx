@@ -4,6 +4,7 @@ import Navbar from "./components/NavigationBar";
 import HomePage from "./pages/Home";
 import ShopPage from "./pages/ShopData";
 import Players from "./pages/Players.jsx";
+import BottomBar from "./components/BottomBar.jsx";
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                 <Route path="/plan_player_data" element={<Players />} />
             </Routes>
 
+          <BottomBar/>
         </BrowserRouter>
     );
 }

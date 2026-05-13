@@ -9,7 +9,7 @@ function Players() {
   const [searchTerm, setSearchTerm] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/plan_player_data?page=${page}&size=50&searchTerm=${searchTerm}`)
+    fetch(`http://localhost:8080/plan_player_data?page=${page}&size=52&searchTerm=${searchTerm}`)
       .then(res => res.json())
       .then(data => setPlayers(data));
   }, [page, searchTerm]);
@@ -27,12 +27,17 @@ function Players() {
         placeholder={"Search..."}
         value={searchTerm}
         onChange={onSearch}
-        style={{ padding: '10px', width: '300px' }}
+        style={{
+          padding: '10px', width: '300px'
+        }}
+      />
+
+      <ul
+        style={{
+          padding: '10px',
+          justifyContent: 'center'
+        }}
       >
-
-      </input>
-
-      <ul>
         {players.map(player => (
 
           <PlayerCard
@@ -43,7 +48,15 @@ function Players() {
         ))}
       </ul>
 
-      <div style={{minWidth: "200px"}}>
+      <div style={{
+        minWidth: "150px",
+        position: 'fixed',
+        verticalAlign: "middle",
+        horizontalAlign: "middle",
+        right: '10px',
+        top: '50%',
+        padding: '10px',
+      }}>
         <h2>Details</h2>
 
         {selectedPlayer ? (
@@ -54,8 +67,8 @@ function Players() {
               height="64"
               alt={"n/a"}/>
 
-            <p><b>Name:</b> {selectedPlayer.name}</p>
-            <p><b>UUID:</b> {selectedPlayer.uuid}</p>
+            <p>{selectedPlayer.name}</p>
+            <p><b>UUID:</b><br/>{selectedPlayer.uuid}</p>
           </div>
         ) : (
           <p>Select a player</p>
